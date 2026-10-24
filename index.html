@@ -1,430 +1,332 @@
 <!DOCTYPE html>
 <html lang="it">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="color-scheme" content="light">
-  <title>Martina Esposito</title>
-  
-  <!-- Font Google -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@600;700&family=Nunito:wght@500;700;800;900&display=swap" rel="stylesheet">
-  
-  <style>
-    :root {
-      --ink: #1f5a7a;
-      --soft: #4b89a8;
-      --pink: #2ea8d8;
-      --accent: #ff5277;
-      --accent-gradient: linear-gradient(135deg, #6ec7e8, #2ea8d8);
-    }
-    
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-    
-    html {
-      height: 100%;
-    }
-    
-    body {
-      min-height: 100%;
-      font-family: 'Nunito', sans-serif;
-      background: radial-gradient(circle at 50% 20%, #ffffff 0%, #f7e6ec 55%, #f2cfdc 100%);
-      color: var(--ink);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 24px 20px;
-      overflow-x: hidden;
-      position: relative;
-    }
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <meta name="color-scheme" content="light" />
+    <title>Martina Esposito</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fredoka:wght@600;700&family=Nunito:wght@500;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --ink: #1f5a7a;
+        --soft: #3f85a8;
+        --pink: #2ea8d8;
+        box-sizing: border-box;
+        padding-top: env(safe-area-inset-top, 0px);
+        padding-bottom: env(safe-area-inset-bottom, 0px);
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html {
+        height: 100%;
+      }
+      body {
+        margin: 0;
+        min-height: 100%;
+        font-family: 'Nunito', sans-serif;
+        background: linear-gradient(180deg, #fcf0f4 0%, #f6cfda 100%);
+        color: var(--ink);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 24px 20px;
+        overflow-x: hidden;
+      }
+      .arrow {
+        position: fixed;
+        top: calc(12px + env(safe-area-inset-top, 0px));
+        right: 22px;
+        width: 44px;
+        height: 120px;
+        animation: bob 1.4s ease-in-out infinite;
+        filter: drop-shadow(0 6px 14px rgba(214, 51, 108, 0.35));
+        z-index: 99;
+      }
+      @keyframes bob {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-10px);
+        }
+      }
+      .wrap {
+        position: relative;
+        width: 100%;
+        max-width: 393px;
+      }
+      .card {
+        background: linear-gradient(180deg, #ffffff, #fdf1f4);
+        border-radius: 36px;
+        padding: 38px 24px 34px;
+        text-align: center;
+        box-shadow: 0 24px 50px rgba(214, 51, 108, 0.16),
+          0 0 0 1px rgba(255, 255, 255, 0.8) inset;
+      }
+      .avatar {
+        position: relative;
+        width: 112px;
+        height: 112px;
+        margin: 0 auto 18px;
+      }
+      .ring {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        padding: 4px;
+        background: linear-gradient(135deg, #6ec7e8, #a8dcef);
+        box-shadow: 0 10px 24px rgba(46, 168, 216, 0.35);
+      }
+      .ring > div {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        border: 3px solid #fff;
+        overflow: hidden;
+        background: linear-gradient(160deg, #6ec7e8, #2ea8d8);
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+      }
+      .ring img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+      .dot {
+        position: absolute;
+        right: 2px;
+        bottom: 6px;
+        width: 18px;
+        height: 18px;
+        border-radius: 50%;
+        background: #2aab27;
+        border: 3px solid #fff;
+      }
+      .pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: #e3f3fa;
+        color: var(--pink);
+        font-weight: 800;
+        font-size: 12px;
+        letter-spacing: 0.14em;
+        padding: 9px 16px;
+        border-radius: 999px;
+        font-family: 'Nunito', sans-serif;
+      }
+      .pill i {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: #6cc993;
+        display: block;
+      }
+      h1 {
+        font-family: 'Fredoka', sans-serif;
+        font-weight: 700;
+        font-size: 29px;
+        line-height: 1.15;
+        margin: 20px 0 10px;
+        letter-spacing: -0.01em;
+      }
+      p.sub {
+        margin: 0 0 26px;
+        color: var(--soft);
+        font-size: 16px;
+        line-height: 1.48;
+        font-weight: 700;
+      }
+      .step {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        background: #fffbfc;
+        border: 1.5px solid #f7dfe7;
+        border-radius: 999px;
+        padding: 12px 16px;
+        margin-top: 12px;
+        text-align: left;
+        font-size: 15px;
+        font-weight: 700;
+      }
+      .n {
+        flex: none;
+        width: 38px;
+        height: 38px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #6ec7e8, #2ea8d8);
+        color: #fff;
+        font-weight: 800;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 6px 12px rgba(46, 168, 216, 0.35);
+        font-family: 'Nunito', sans-serif;
+      }
+      .step b {
+        color: var(--pink);
+      }
+      .btn-open {
+        display: none;
+        margin-top: 22px;
+        background: linear-gradient(135deg, #6ec7e8, #2ea8d8);
+        color: #fff;
+        text-decoration: none;
+        padding: 16px 28px;
+        border-radius: 999px;
+        font-weight: 800;
+        font-size: 17px;
+        box-shadow: 0 8px 20px rgba(46, 168, 216, 0.4);
+        transition: transform 0.15s ease;
+      }
+      .btn-open:active {
+        transform: scale(0.97);
+      }
+      .h {
+        position: absolute;
+        font-size: 34px;
+        animation: fl 3s ease-in-out infinite;
+      }
+      .h1 {
+        top: -34px;
+        left: -6px;
+      }
+      .h2 {
+        bottom: -22px;
+        right: 8px;
+        font-size: 22px;
+        animation-delay: 1s;
+      }
+      @keyframes fl {
+        0%,
+        100% {
+          transform: translateY(0) rotate(-6deg);
+        }
+        50% {
+          transform: translateY(-8px) rotate(6deg);
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .arrow,
+        .h {
+          animation: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <svg id="top-arrow" class="arrow" viewBox="0 0 44 120" aria-hidden="true">
+      <defs>
+        <linearGradient id="g" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#c9285f" />
+          <stop offset="1" stop-color="#f4a5bd" stop-opacity=".3" />
+        </linearGradient>
+      </defs>
+      <path
+        d="M22 116V12M6 28L22 10l16 18"
+        fill="none"
+        stroke="url(#g)"
+        stroke-width="7"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+    </svg>
 
-    /* Freccia indicatrice per In-App Browser (TikTok / Instagram) */
-    .arrow {
-      position: fixed;
-      top: calc(14px + env(safe-area-inset-top, 0px));
-      right: 22px;
-      width: 46px;
-      height: 124px;
-      animation: bob 1.4s ease-in-out infinite;
-      filter: drop-shadow(0 8px 16px rgba(214, 51, 108, 0.4));
-      z-index: 99;
-      pointer-events: none;
-      transition: opacity 0.3s ease, transform 0.3s ease;
-    }
+    <div class="wrap">
+      <span class="h h1">💖</span>
+      <main class="card">
+        <div class="avatar">
+          <div class="ring">
+            <div>
+              <img src="avatar.png" alt="Avatar" />
+            </div>
+          </div>
+          <span class="dot"></span>
+        </div>
+        <span class="pill"><i></i>È ONLINE</span>
 
-    @keyframes bob {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-12px); }
-    }
-
-    /* Contenitore card */
-    .wrap {
-      position: relative;
-      width: 100%;
-      max-width: 396px;
-      margin: auto;
-    }
-
-    .card {
-      position: relative;
-      background: linear-gradient(180deg, #ffffff 0%, #fff7f9 100%);
-      border-radius: 36px;
-      padding: 38px 24px 34px;
-      text-align: center;
-      box-shadow: 0 24px 50px rgba(214, 51, 108, 0.16), 0 0 0 1px rgba(255, 255, 255, 0.8) inset;
-      backdrop-filter: blur(8px);
-    }
-
-    /* Avatar con ghiera animata */
-    .avatar {
-      position: relative;
-      width: 114px;
-      height: 114px;
-      margin: 0 auto 16px;
-    }
-
-    .ring {
-      width: 100%;
-      height: 100%;
-      border-radius: 50%;
-      padding: 4px;
-      background: linear-gradient(135deg, #6ec7e8, #ff8fb1);
-      box-shadow: 0 10px 24px rgba(46, 168, 216, 0.32);
-      transition: transform 0.3s ease;
-    }
-
-    .ring:hover {
-      transform: scale(1.03);
-    }
-
-    .ring > div {
-      width: 100%;
-      height: 100%;
-      border-radius: 50%;
-      border: 3.5px solid #fff;
-      overflow: hidden;
-      background: linear-gradient(160deg, #6ec7e8, #2ea8d8);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .ring img, .ring svg {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-
-    .dot {
-      position: absolute;
-      right: 4px;
-      bottom: 6px;
-      width: 20px;
-      height: 20px;
-      border-radius: 50%;
-      background: #25d366;
-      border: 3.5px solid #fff;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
-    }
-
-    /* Badge di stato */
-    .pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: #e3f3fa;
-      color: var(--pink);
-      font-weight: 800;
-      font-size: 12px;
-      letter-spacing: 0.12em;
-      padding: 8px 16px;
-      border-radius: 999px;
-      font-family: 'Nunito', sans-serif;
-      text-transform: uppercase;
-      box-shadow: 0 2px 6px rgba(46, 168, 216, 0.15);
-    }
-
-    .pill i {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: #25d366;
-      display: block;
-      box-shadow: 0 0 0 3px rgba(37, 211, 102, 0.25);
-    }
-
-    h1 {
-      font-family: 'Fredoka', sans-serif;
-      font-weight: 700;
-      font-size: 28px;
-      line-height: 1.2;
-      margin: 18px 0 10px;
-      letter-spacing: -0.01em;
-      color: #1a425b;
-    }
-
-    p.sub {
-      margin: 0 0 24px;
-      color: var(--soft);
-      font-size: 15px;
-      line-height: 1.5;
-      font-weight: 700;
-    }
-
-    /* Step istruzioni TikTok */
-    .step {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      background: #fffbfc;
-      border: 1.5px solid #f7dfe7;
-      border-radius: 20px;
-      padding: 13px 18px;
-      margin-top: 12px;
-      text-align: left;
-      font-size: 15px;
-      font-weight: 700;
-      transition: transform 0.18s ease, border-color 0.18s ease;
-    }
-
-    .step:hover {
-      transform: translateY(-2px);
-      border-color: #f0bcd0;
-    }
-
-    .n {
-      flex: none;
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, #6ec7e8, #2ea8d8);
-      color: #fff;
-      font-weight: 800;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 6px 12px rgba(46, 168, 216, 0.35);
-      font-size: 16px;
-    }
-
-    .step b {
-      color: var(--pink);
-    }
-
-    /* Pulsante Telegram */
-    .btn-open {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      width: 100%;
-      margin-top: 16px;
-      background: linear-gradient(135deg, #32a9e2, #1b8dcb);
-      color: #fff;
-      text-decoration: none;
-      padding: 16px 26px;
-      border-radius: 999px;
-      font-weight: 800;
-      font-size: 17px;
-      box-shadow: 0 10px 24px rgba(46, 168, 216, 0.42);
-      transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    }
-
-    .btn-open:hover {
-      transform: translateY(-2px) scale(1.02);
-      box-shadow: 0 12px 28px rgba(46, 168, 216, 0.5);
-    }
-
-    .btn-open:active {
-      transform: scale(0.97);
-    }
-
-    /* Cuori decorativi */
-    .h {
-      position: absolute;
-      font-size: 34px;
-      user-select: none;
-      animation: fl 3s ease-in-out infinite;
-      filter: drop-shadow(0 4px 10px rgba(255, 105, 180, 0.3));
-    }
-
-    .h1 { top: -28px; left: -10px; }
-    .h2 { bottom: -18px; right: 6px; font-size: 24px; animation-delay: 1.2s; }
-
-    @keyframes fl {
-      0%, 100% { transform: translateY(0) rotate(-6deg); }
-      50% { transform: translateY(-8px) rotate(6deg); }
-    }
-
-    /* Selettore interattivo modalità di anteprima */
-    .preview-switcher {
-      margin-top: 28px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      background: rgba(255, 255, 255, 0.8);
-      border: 1px solid rgba(214, 51, 108, 0.2);
-      padding: 6px 10px;
-      border-radius: 999px;
-      box-shadow: 0 6px 16px rgba(0,0,0,0.06);
-      z-index: 10;
-    }
-
-    .switcher-btn {
-      border: none;
-      background: transparent;
-      padding: 6px 14px;
-      border-radius: 999px;
-      font-family: inherit;
-      font-size: 13px;
-      font-weight: 800;
-      color: #637f92;
-      cursor: pointer;
-      transition: all 0.2s ease;
-    }
-
-    .switcher-btn.active {
-      background: #2ea8d8;
-      color: #fff;
-      box-shadow: 0 3px 8px rgba(46, 168, 216, 0.35);
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      .arrow, .h { animation: none; }
-    }
-  </style>
-</head>
-<body>
-
-  <!-- Freccia che indica i 3 puntini in alto a destra -->
-  <svg id="top-arrow" class="arrow" viewBox="0 0 44 120" aria-hidden="true">
-    <defs>
-      <linearGradient id="g" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0" stop-color="#c9285f"/>
-        <stop offset="1" stop-color="#f4a5bd" stop-opacity=".3"/>
-      </linearGradient>
-    </defs>
-    <path d="M22 116V12M6 28L22 10l16 18" fill="none" stroke="url(#g)" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
-  </svg>
-
-  <div class="wrap">
-    <span class="h h1" aria-hidden="true">💖</span>
-    
-    <main class="card">
-      <div class="avatar">
-        <div class="ring">
-          <div>
-            <!-- Immagine avatar con fallback SVG automatico in caso di errore -->
-            <img 
-              id="user-avatar" 
-              src="avatar.png" 
-              alt="Martina Esposito"
-              onerror="showAvatarFallback(this)">
+        <div id="tiktok-view">
+          <h1>Aprimi nel browser 💕</h1>
+          <p class="sub">
+            Altrimenti non riesci ad aprire la mia chat.<br />Ci vuole un
+            attimo, promesso 🤍
+          </p>
+          <div class="step">
+            <span class="n">1</span>
+            <span>Tocca i <b>3 puntini ···</b> in alto a destra</span>
+          </div>
+          <div class="step">
+            <span class="n">2</span>
+            <span>Scegli <b>"Apri nel browser"</b></span>
           </div>
         </div>
-        <span class="dot" title="Online adesso"></span>
-      </div>
-      
-      <span class="pill"><i></i>È ONLINE</span>
-      
-      <!-- Schermata TikTok / In-App browser -->
-      <div id="tiktok-view">
-        <h1>Aprimi nel browser 💕</h1>
-        <p class="sub">Altrimenti non riesci ad aprire la mia chat.<br>Ci vuole un attimo, promesso 🤍</p>
-        <div class="step">
-          <span class="n">1</span>
-          <span>Tocca i <b>3 puntini ···</b> in alto a destra</span>
+
+        <div id="browser-view" style="display: none">
+          <h1>Apertura chat... 💕</h1>
+          <p class="sub">
+            Ti stiamo reindirizzando su Telegram.<br />Se non si apre, tocca il
+            bottone qui sotto 🤍
+          </p>
+          <a
+            id="tg-btn"
+            class="btn-open"
+            href="https://t.me/+wx0CgGrU5kMwOWY0"
+          >
+            Entra su Telegram 💕
+          </a>
         </div>
-        <div class="step">
-          <span class="n">2</span>
-          <span>Scegli <b>"Apri nel browser"</b></span>
-        </div>
-      </div>
+      </main>
+      <span class="h h2">💗</span>
+    </div>
 
-      <!-- Schermata Browser Standard / Telegram -->
-      <div id="browser-view" style="display: none;">
-        <h1>Apertura chat... 💕</h1>
-        <p class="sub">Ti stiamo reindirizzando su Telegram.<br>Se non si apre subito, tocca il tasto qui sotto 🤍</p>
-        <a id="tg-btn" class="btn-open" href="https://t.me/+wx0CgGrU5kMwOWY0" target="_blank" rel="noopener noreferrer">
-          <!-- Icona Telegram SVG -->
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69.01-.03.01-.14-.07-.19-.08-.05-.19-.02-.27 0-.12.03-1.99 1.27-5.62 3.72-.53.36-1.01.54-1.44.53-.47-.01-1.38-.27-2.06-.49-.83-.27-1.49-.42-1.43-.88.03-.24.38-.49 1.03-.75 4.04-1.76 6.74-2.92 8.09-3.48 3.85-1.6 4.65-1.88 5.17-1.89.11 0 .37.03.53.17.14.12.18.28.2.45-.01.07.01.22 0 .28z" fill="currentColor"/>
-          </svg>
-          Entra su Telegram 💕
-        </a>
-      </div>
-    </main>
-    
-    <span class="h h2" aria-hidden="true">💗</span>
-  </div>
+    <script>
+      // Link Telegram (URL web e schema per apertura app)
+      const TG_WEB_URL = "https://t.me/+wx0CgGrU5kMwOWY0";
+      const TG_DEEP_LINK = "tg://join?invite=wx0CgGrU5kMwOWY0";
 
-  <!-- Pulsanti per testare le due schermate direttamente nella preview -->
-  <div class="preview-switcher">
-    <button type="button" id="btn-mode-tiktok" class="switcher-btn active" onclick="switchMode('tiktok')">Modalità TikTok</button>
-    <button type="button" id="btn-mode-browser" class="switcher-btn" onclick="switchMode('browser')">Modalità Browser</button>
-  </div>
-
-  <script>
-    const TG_WEB_URL   = "https://t.me/+wx0CgGrU5kMwOWY0";
-    const TG_DEEP_LINK = "tg://join?invite=wx0CgGrU5kMwOWY0";
-
-    // Fallback automatico se avatar.png non è presente
-    function showAvatarFallback(img) {
-      img.onerror = null; // evita loop infiniti
-      img.src = 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><linearGradient id="avG" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="%23ff9ebb"/><stop offset="100%" stop-color="%232ea8d8"/></linearGradient></defs><rect width="100" height="100" fill="url(%23avG)"/><circle cx="50" cy="38" r="20" fill="%23ffffff"/><path d="M22 84 C22 64, 78 64, 78 84 Z" fill="%23ffffff"/></svg>';
-    }
-
-    // Funzione per cambiare interfaccia (per simulare o gestire la visualizzazione)
-    function switchMode(mode, executeRedirect = false) {
-      const arrow   = document.getElementById("top-arrow");
-      const ttView  = document.getElementById("tiktok-view");
-      const brView  = document.getElementById("browser-view");
-      const btnTT   = document.getElementById("btn-mode-tiktok");
-      const btnBR   = document.getElementById("btn-mode-browser");
-
-      if (mode === 'browser') {
-        if (arrow) arrow.style.display = "none";
-        if (ttView) ttView.style.display = "none";
-        if (brView) brView.style.display = "block";
-        btnTT.classList.remove("active");
-        btnBR.classList.add("active");
-
-        if (executeRedirect) {
-          // Tenta apertura diretta nell'app Telegram
-          window.location.href = TG_DEEP_LINK;
-          // Fallback al browser dopo 450ms se l'app non è installata/non si avvia
-          setTimeout(function() {
-            window.location.href = TG_WEB_URL;
-          }, 450);
-        }
-      } else {
-        if (arrow) arrow.style.display = "block";
-        if (ttView) ttView.style.display = "block";
-        if (brView) brView.style.display = "none";
-        btnTT.classList.add("active");
-        btnBR.classList.remove("active");
-      }
-    }
-
-    // Rilevamento automatico browser in-app (TikTok, ByteDance, Musical.ly)
-    (function detectBrowser() {
-      const ua = (navigator.userAgent || navigator.vendor || window.opera || "").toLowerCase();
+      // Controllo in-app browser di TikTok
+      // Nota: corretti gli operatori logici mancanti (||)
+      const ua = navigator.userAgent || navigator.vendor || window.opera;
       const isTikTok = /musical_ly|bytedance|tiktok/i.test(ua);
 
-      // Se non si trova su TikTok, attiva la schermata con redirect Telegram
       if (!isTikTok) {
-        switchMode('browser', false);
-      } else {
-        switchMode('tiktok', false);
+        // 1. Fuori da TikTok: nasconde la freccia in alto
+        const arrow = document.getElementById("top-arrow");
+        if (arrow) arrow.style.display = "none";
+
+        // 2. Mostra la schermata con il pulsante per Telegram
+        const ttView = document.getElementById("tiktok-view");
+        const brView = document.getElementById("browser-view");
+        const tgBtn = document.getElementById("tg-btn");
+
+        if (ttView) ttView.style.display = "none";
+        if (brView) brView.style.display = "block";
+        if (tgBtn) {
+          tgBtn.href = TG_WEB_URL;
+          tgBtn.style.display = "inline-block";
+        }
+
+        // 3. Prova ad aprire subito l'app Telegram
+        window.location.href = TG_DEEP_LINK;
+
+        // 4. Fallback automatico via web dopo 400ms se l'app non si avvia subito
+        setTimeout(function () {
+          window.location.href = TG_WEB_URL;
+        }, 400);
       }
-    })();
-  </script>
-</body>
+    </script>
+  </body>
 </html>
