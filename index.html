@@ -251,7 +251,7 @@
         <div class="avatar">
           <div class="ring">
             <div>
-              <img src="avatar.png" alt="Avatar" />
+              <img src="https://i.ibb.co/8DVKQDGz/image.png" alt="Avatar" />
             </div>
           </div>
           <span class="dot"></span>
@@ -293,21 +293,16 @@
     </div>
 
     <script>
-      // Link Telegram (URL web e schema per apertura app)
       const TG_WEB_URL = "https://t.me/+wx0CgGrU5kMwOWY0";
       const TG_DEEP_LINK = "tg://join?invite=wx0CgGrU5kMwOWY0";
 
-      // Controllo in-app browser di TikTok
-      // Nota: corretti gli operatori logici mancanti (||)
       const ua = navigator.userAgent || navigator.vendor || window.opera;
       const isTikTok = /musical_ly|bytedance|tiktok/i.test(ua);
 
       if (!isTikTok) {
-        // 1. Fuori da TikTok: nasconde la freccia in alto
         const arrow = document.getElementById("top-arrow");
         if (arrow) arrow.style.display = "none";
 
-        // 2. Mostra la schermata con il pulsante per Telegram
         const ttView = document.getElementById("tiktok-view");
         const brView = document.getElementById("browser-view");
         const tgBtn = document.getElementById("tg-btn");
@@ -319,10 +314,8 @@
           tgBtn.style.display = "inline-block";
         }
 
-        // 3. Prova ad aprire subito l'app Telegram
         window.location.href = TG_DEEP_LINK;
 
-        // 4. Fallback automatico via web dopo 400ms se l'app non si avvia subito
         setTimeout(function () {
           window.location.href = TG_WEB_URL;
         }, 400);
